@@ -24,13 +24,16 @@ class ModBot(commands.Bot):
         await self.load_extension("cogs.moderation")
 
         # With DEV_GUILD_ID set, commands sync to that server instantly instead of
-        # taking up to an hour to propagate globally.
+        # taking up to an hour to propagate globally. The global list is then
+        # emptied so each command shows up once instead of twice.
         dev_guild = os.getenv("DEV_GUILD_ID")
         if dev_guild:
             guild = discord.Object(id=int(dev_guild))
             self.tree.copy_global_to(guild=guild)
             await self.tree.sync(guild=guild)
-            log.info("Synced commands to dev guild %s", dev_guild)
+            self.tree.clear_commands(guild=None)
+            await self.tree.sync()
+            log.info("Synced commands to dev guild %s (global list cleared)", dev_guild)
         else:
             await self.tree.sync()
             log.info("Synced commands globally")

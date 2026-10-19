@@ -35,7 +35,7 @@ cp .env.example .env   # then set DISCORD_TOKEN
 python bot.py
 ```
 
-Set `DEV_GUILD_ID` in `.env` to sync commands to one server instantly while developing. Without it, commands sync globally, which can take up to an hour to show up.
+Set `DEV_GUILD_ID` in `.env` to sync commands to one server instantly. The bot then clears its global command list so each command appears once, in that server only. Without it, commands sync globally to every server the bot is in, which can take up to an hour to show up.
 
 Warnings and log-channel settings are stored in `moderation.db` (SQLite) next to the bot. No privileged intents are required.
 
