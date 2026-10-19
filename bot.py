@@ -20,6 +20,7 @@ class ModBot(commands.Bot):
 
     async def setup_hook(self) -> None:
         await db.init()
+        await self.load_extension("cogs.general")
         await self.load_extension("cogs.moderation")
 
         # With DEV_GUILD_ID set, commands sync to that server instantly instead of

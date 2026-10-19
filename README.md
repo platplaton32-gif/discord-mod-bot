@@ -6,6 +6,7 @@ A small moderation bot built with [discord.py](https://discordpy.readthedocs.io/
 
 | Command | Permission needed | What it does |
 | --- | --- | --- |
+| `/ping` | None | Check the bot is online and see its latency |
 | `/kick member [reason]` | Kick Members | Kick a member |
 | `/ban member [reason] [delete_days]` | Ban Members | Ban a member, optionally deleting 0-7 days of messages |
 | `/unban user_id [reason]` | Ban Members | Unban a user by ID |
